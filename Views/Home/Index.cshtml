@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+        <div class="container-fluid py-5">
+            <h1 class="display-4 fw-bold text-primary">Find Your Dream Job Today</h1>
+            <p class="col-md-8 mx-auto fs-4">
+                Connect with the best employers in Uganda. Search for jobs or post new opportunities to hire the best talent.
+            </p>
+            <div class="d-flex justify-content-center mt-4">
+                <form class="d-flex w-50" asp-controller="Jobs" asp-action="Index" method="get">
+                    <input class="form-control me-2 form-control-lg" type="search" placeholder="Job title, keywords, or company" aria-label="Search" name="searchString">
+                    <button class="btn btn-primary btn-lg px-4" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="mt-4">
+                <a class="btn btn-outline-primary btn-lg" asp-area="Identity" asp-page="/Account/Register">Register Now</a>
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Jobs" asp-action="Index">Browse Jobs</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row align-items-md-stretch mt-4">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>For Job Seekers</h2>
+          <p>Create a profile, upload your CV, and apply for thousands of available jobs in just a few clicks. Get discovered by top companies.</p>
+          <a class="btn btn-outline-light" asp-area="Identity" asp-page="/Account/Register" asp-route-role="JobSeeker">Join as a Job Seeker</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>For Employers</h2>
+          <p>Post your job openings, manage applications, and find the perfect candidates for your company quickly and efficiently.</p>
+          <a class="btn btn-outline-secondary" asp-area="Identity" asp-page="/Account/Register" asp-route-role="Employer">Post a Job</a>
+        </div>
+      </div>
+    </div>
+</div>
