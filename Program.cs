@@ -1,3 +1,4 @@
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using KaziKagwilawo.Data;
@@ -75,8 +76,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Enable Legacy Timestamp Behavior for Npgsql
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Configure the HTTP request pipeline.
 app.UseDeveloperExceptionPage();
