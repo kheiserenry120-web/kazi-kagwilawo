@@ -1,0 +1,16 @@
+databases:
+  - name: kazikagwilawo-db
+    plan: free
+    databaseName: kazi_db
+    user: kazi_admin
+
+services:
+  - type: web
+    name: kazi-kagwilawo-web
+    env: docker
+    plan: free
+    envVars:
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: kazikagwilawo-db
+          property: connectionString
