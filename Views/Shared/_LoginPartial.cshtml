@@ -3,27 +3,37 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav align-items-center">
 @if (SignInManager.IsSignedIn(User))
 {
     var user = await UserManager.GetUserAsync(User);
-    var displayName = user?.FirstName ?? User.Identity?.Name;
-    <li class="nav-item">
-        <a  class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @displayName!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-white">Logout</button>
-        </form>
+    var fullName = User.FindFirst("FullName")?.Value ?? user?.FirstName ?? User.Identity?.Name?.Split('@')[0];
+    
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-flex align-items-center py-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="me-2 text-dark fw-medium">Hello @fullName 👋</span>
+            <img src="https://ui-avatars.com/api/?name=@fullName&background=0D6EFD&color=fff&rounded=true&size=32" 
+                 alt="User" class="rounded-circle shadow-sm" width="32" height="32">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 rounded-3 overflow-hidden" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item py-2 px-3" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a></li>
+            <li><a class="dropdown-item py-2 px-3" asp-area="Identity" asp-page="/Account/Manage/Index">Settings</a></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="dropdown-item py-2 px-3 text-danger">Logout</button>
+                </form>
+            </li>
+        </ul>
     </li>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <li class="nav-item me-2">
+        <a class="nav-link fw-medium text-dark px-3" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link btn btn-primary text-white px-4 rounded-pill shadow-sm" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
     </li>
 }
 </ul>
