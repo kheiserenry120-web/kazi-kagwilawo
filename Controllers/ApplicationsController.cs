@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using KaziKagwilawo.Data;
 using KaziKagwilawo.Models;
 
 namespace KaziKagwilawo.Controllers
 {
+    [Authorize]
     public class ApplicationsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -47,6 +49,7 @@ namespace KaziKagwilawo.Controllers
         }
 
         // GET: Applications/Create
+        [Authorize(Roles = "JobSeeker,Admin")]
         public IActionResult Create()
         {
             ViewData["JobId"] = new SelectList(_context.Jobs, "Id", "Description");
@@ -59,6 +62,7 @@ namespace KaziKagwilawo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "JobSeeker,Admin")]
         public async Task<IActionResult> Create([Bind("Id,JobId,JobSeekerId,AppliedDate,Status,CoverLetter,CvFilePath")] Application application)
         {
             if (ModelState.IsValid)
@@ -73,6 +77,7 @@ namespace KaziKagwilawo.Controllers
         }
 
         // GET: Applications/Edit/5
+        [Authorize(Roles = "JobSeeker,Employer,Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,6 +100,7 @@ namespace KaziKagwilawo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "JobSeeker,Employer,Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,JobId,JobSeekerId,AppliedDate,Status,CoverLetter,CvFilePath")] Application application)
         {
             if (id != application.Id)
@@ -128,6 +134,7 @@ namespace KaziKagwilawo.Controllers
         }
 
         // GET: Applications/Delete/5
+        [Authorize(Roles = "JobSeeker,Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +157,7 @@ namespace KaziKagwilawo.Controllers
         // POST: Applications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "JobSeeker,Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var application = await _context.Applications.FindAsync(id);
