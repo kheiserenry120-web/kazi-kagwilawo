@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KaziKagwilawo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25b568ec3be895ed082dea8f2f9c729f656f6fca")]
 [assembly: System.Reflection.AssemblyProductAttribute("KaziKagwilawo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KaziKagwilawo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
