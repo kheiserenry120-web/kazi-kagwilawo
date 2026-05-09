@@ -12,7 +12,7 @@ namespace KaziKagwilawo.Models
         public int JobSeekerId { get; set; }
         public virtual JobSeeker JobSeeker { get; set; }
 
-        public DateTime AppliedDate { get; set; } = DateTime.Now;
+        public DateTime AppliedDate { get; set; } = DateTime.UtcNow;
         
         public string Status { get; set; } = "Pending"; // Pending, Shortlisted, Rejected, Hired
         

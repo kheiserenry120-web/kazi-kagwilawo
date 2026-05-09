@@ -20,7 +20,7 @@ namespace KaziKagwilawo.Models
         public string JobType { get; set; } = "Full-time"; // Full-time, Part-time, Contract, etc.
         public decimal? Salary { get; set; }
 
-        public DateTime PostedDate { get; set; } = DateTime.Now;
+        public DateTime PostedDate { get; set; } = DateTime.UtcNow;
         public DateTime? Deadline { get; set; }
         
         public bool IsActive { get; set; } = true;
