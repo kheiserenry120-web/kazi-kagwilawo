@@ -116,6 +116,12 @@ namespace KaziKagwilawo.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "Employee Age Range")]
+            public string EmployeeAgeRange { get; set; }
+
+            [Display(Name = "Working Experience Required")]
+            public string WorkingExperience { get; set; }
         }
 
 
@@ -129,6 +135,19 @@ namespace KaziKagwilawo.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            if (Input.Role == "Employer")
+            {
+                if (string.IsNullOrEmpty(Input.EmployeeAgeRange))
+                {
+                    ModelState.AddModelError("Input.EmployeeAgeRange", "Employee Age Range is required.");
+                }
+                if (string.IsNullOrEmpty(Input.WorkingExperience))
+                {
+                    ModelState.AddModelError("Input.WorkingExperience", "Working Experience is required.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -152,7 +171,13 @@ namespace KaziKagwilawo.Areas.Identity.Pages.Account
 
                     if (Input.Role == "Employer")
                     {
-                        _context.Employers.Add(new Employer { ApplicationUserId = user.Id, CompanyName = "Update Profile" });
+                        _context.Employers.Add(new Employer 
+                        { 
+                            ApplicationUserId = user.Id, 
+                            CompanyName = "Update Profile",
+                            EmployeeAgeRange = Input.EmployeeAgeRange,
+                            WorkingExperience = Input.WorkingExperience
+                        });
                     }
                     else if (Input.Role == "JobSeeker")
                     {

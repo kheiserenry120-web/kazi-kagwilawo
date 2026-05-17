@@ -178,7 +178,6 @@ C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\a3ygkwa5zy-{0}
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\nezrqnk58p-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\v0zgfp0y55-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\kp7gozz99w-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\2cydk1w0nt-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\mwjp4dmldy-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\p4e43xw9jg-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -370,3 +369,4 @@ C:\Users\DELL\Desktop\kazi kagwilawo\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAna
 C:\Users\DELL\Desktop\kazi kagwilawo\bin\Debug\net10.0\Npgsql.dll
 C:\Users\DELL\Desktop\kazi kagwilawo\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\KaziKagwilawo.sourcelink.json
+C:\Users\DELL\Desktop\kazi kagwilawo\obj\Debug\net10.0\compressed\kp7gozz99w-{0}-os4yvoxdh9-os4yvoxdh9.gz

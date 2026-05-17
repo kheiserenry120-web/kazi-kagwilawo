@@ -14,6 +14,14 @@ namespace KaziKagwilawo.Models
         public string CompanyDescription { get; set; } = string.Empty;
         public string Industry { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(50)]
+        public string EmployeeAgeRange { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(50)]
+        public string WorkingExperience { get; set; } = string.Empty;
         
         public virtual ICollection<Job> Jobs { get; set; } = new List<Job>();
     }

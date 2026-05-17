@@ -12,6 +12,18 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            
+            <style>
+                .custom-select-rounded {
+                    border-radius: 12px;
+                    transition: all 0.3s ease-in-out;
+                }
+                .custom-select-rounded:focus {
+                    box-shadow: 0 0 8px rgba(13, 110, 253, 0.25);
+                    border-color: #86b7fe;
+                }
+            </style>
+
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <label asp-for="Input.Email">Email</label>
@@ -35,6 +47,41 @@
                 <label asp-for="Input.Role">Register As</label>
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
             </div>
+
+            <div id="employerFields" style="display: none;">
+                <div class="form-floating mb-4">
+                    <select asp-for="Input.EmployeeAgeRange" class="form-select custom-select-rounded">
+                        <option value="">-- Select Age Range --</option>
+                        <option value="18–25">18–25</option>
+                        <option value="26–35">26–35</option>
+                        <option value="36–45">36–45</option>
+                        <option value="46–55">46–55</option>
+                        <option value="56+">56+</option>
+                    </select>
+                    <label asp-for="Input.EmployeeAgeRange">
+                        <i class="bi bi-person-lines-fill"></i> Employee Age Range
+                    </label>
+                    <small class="form-text text-muted ms-2">Preferred employee age category.</small>
+                    <span asp-validation-for="Input.EmployeeAgeRange" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <select asp-for="Input.WorkingExperience" class="form-select custom-select-rounded">
+                        <option value="">-- Select Experience --</option>
+                        <option value="No Experience">No Experience</option>
+                        <option value="1–2 Years">1–2 Years</option>
+                        <option value="3–5 Years">3–5 Years</option>
+                        <option value="6–10 Years">6–10 Years</option>
+                        <option value="10+ Years">10+ Years</option>
+                    </select>
+                    <label asp-for="Input.WorkingExperience">
+                        <i class="bi bi-briefcase-fill"></i> Working Experience Required
+                    </label>
+                    <small class="form-text text-muted ms-2">Minimum experience expected from applicants.</small>
+                    <span asp-validation-for="Input.WorkingExperience" class="text-danger"></span>
+                </div>
+            </div>
+
             <div class="form-floating mb-3">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <label asp-for="Input.Password">Password</label>
@@ -82,4 +129,23 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var roleSelect = document.getElementById("Input_Role");
+            var employerFields = document.getElementById("employerFields");
+
+            function toggleEmployerFields() {
+                if (roleSelect.value === "Employer") {
+                    employerFields.style.display = "block";
+                } else {
+                    employerFields.style.display = "none";
+                }
+            }
+
+            if (roleSelect) {
+                roleSelect.addEventListener("change", toggleEmployerFields);
+                toggleEmployerFields(); // Run on load in case Employer was selected (e.g., after failed validation)
+            }
+        });
+    </script>
 }
