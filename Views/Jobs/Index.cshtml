@@ -15,6 +15,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Employer)
             </th>
+            <th>Age Pref.</th>
+            <th>Exp. Req.</th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -50,6 +52,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Employer.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer.EmployeeAgeRange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer.WorkingExperience)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

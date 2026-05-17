@@ -17,6 +17,18 @@
             @Html.DisplayFor(model => model.Employer.CompanyName)
         </dd>
         <dt class = "col-sm-2">
+            <i class="bi bi-person-lines-fill text-primary"></i> Age Preference
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employer.EmployeeAgeRange)
+        </dd>
+        <dt class = "col-sm-2">
+            <i class="bi bi-briefcase-fill text-primary"></i> Experience Req.
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employer.WorkingExperience)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
